@@ -2,6 +2,9 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+const ROOT_DIR = path.join(__dirname, '..');
+const PORT = process.env.PORT || 3000;
+
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -17,20 +20,19 @@ const MIME_TYPES = {
   '.ttf': 'font/ttf'
 };
 
-function handler(req, res) {
+const server = http.createServer((req, res) => {
   let cleanUrl = req.url.split('?')[0];
   if (cleanUrl === '/' || cleanUrl === '') {
     cleanUrl = '/index.html';
   }
 
   const safePath = path.normalize(cleanUrl).replace(/^(\.\.[\/\\])+/, '');
-  const filePath = path.join(__dirname, safePath);
+  const filePath = path.join(ROOT_DIR, safePath);
   const ext = path.extname(filePath).toLowerCase();
 
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
-      // Fallback to index.html
-      const indexPath = path.join(__dirname, 'index.html');
+      const indexPath = path.join(ROOT_DIR, 'index.html');
       fs.readFile(indexPath, (idxErr, content) => {
         if (idxErr) {
           res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
@@ -46,26 +48,18 @@ function handler(req, res) {
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
     res.writeHead(200, {
       'Content-Type': contentType,
-      'Cache-Control': 'public, max-age=3600',
+      'Cache-Control': 'no-cache',
       'Content-Length': stats.size
     });
 
     const stream = fs.createReadStream(filePath);
     stream.pipe(res);
   });
-}
+});
 
-// If run directly from terminal: `node server.js`
-if (require.main === module) {
-  const PORT = process.env.PORT || 3000;
-  const server = http.createServer(handler);
-  server.listen(PORT, () => {
-    console.log(`=================================================`);
-    console.log(` Ranju Sah (रन्जु साह) Website running locally!`);
-    console.log(` Local URL: http://localhost:${PORT}`);
-    console.log(`=================================================`);
-  });
-}
-
-// Export for Vercel Node.js Serverless runtime
-module.exports = handler;
+server.listen(PORT, () => {
+  console.log(`=================================================`);
+  console.log(` Ranju Sah Website running locally!`);
+  console.log(` Local URL: http://localhost:${PORT}`);
+  console.log(`=================================================`);
+});
