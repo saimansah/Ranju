@@ -1,4 +1,0 @@
-# Files to ignore on Vercel deployment
-server.js
-.git
-.github

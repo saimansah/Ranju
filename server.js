@@ -2,8 +2,6 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || 3000;
-
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -19,8 +17,7 @@ const MIME_TYPES = {
   '.ttf': 'font/ttf'
 };
 
-const server = http.createServer((req, res) => {
-  // Normalize URL and remove query parameters
+function handler(req, res) {
   let cleanUrl = req.url.split('?')[0];
   if (cleanUrl === '/' || cleanUrl === '') {
     cleanUrl = '/index.html';
@@ -32,27 +29,43 @@ const server = http.createServer((req, res) => {
 
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
-      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-      res.end('404 Not Found');
+      // Fallback to index.html
+      const indexPath = path.join(__dirname, 'index.html');
+      fs.readFile(indexPath, (idxErr, content) => {
+        if (idxErr) {
+          res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+          res.end('404 Not Found');
+          return;
+        }
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(content);
+      });
       return;
     }
 
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
     res.writeHead(200, {
       'Content-Type': contentType,
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Cache-Control': 'public, max-age=3600',
       'Content-Length': stats.size
     });
 
     const stream = fs.createReadStream(filePath);
     stream.pipe(res);
   });
-});
+}
 
-server.listen(PORT, () => {
-  console.log(`=================================================`);
-  console.log(` Ranju Sah (रन्जु साह) Website is running locally!`);
-  console.log(` Local URL: http://localhost:${PORT}`);
-  console.log(` Press Ctrl+C to stop.`);
-  console.log(`=================================================`);
-});
+// If run directly from terminal: `node server.js`
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  const server = http.createServer(handler);
+  server.listen(PORT, () => {
+    console.log(`=================================================`);
+    console.log(` Ranju Sah (रन्जु साह) Website running locally!`);
+    console.log(` Local URL: http://localhost:${PORT}`);
+    console.log(`=================================================`);
+  });
+}
+
+// Export for Vercel Node.js Serverless runtime
+module.exports = handler;
