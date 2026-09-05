@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hero_portrait_status_sub: "Directly accessible for citizens of Madhesh",
 
       // Vision Quote Banner
-      vision_quote: "True democracy remains incomplete until the voices of farmers, small border traders, and marginalized women are firmly rooted in public policy.",
+      vision_quote: "True democracy remains incomplete until the voices of farmers, local border sellers, and forgotten women are firmly rooted in public policy.",
       vision_author: "— Ranju Sah, Central Office Secretary (AJP)",
 
       // About Section
