@@ -72,9 +72,9 @@ Ranju/
 
 ## 🌐 Live Production & Search Engine URLs
 
-- **Official Website:** `https://saimansah.github.io/Ranju/`
-- **XML Sitemap:** `https://saimansah.github.io/Ranju/sitemap.xml`
-- **Robots.txt:** `https://saimansah.github.io/Ranju/robots.txt`
+- **Official Website:** `https://www.sahranju.com.np/`
+- **XML Sitemap:** `https://www.sahranju.com.np/sitemap.xml`
+- **Robots.txt:** `https://www.sahranju.com.np/robots.txt`
 
 ---
 
