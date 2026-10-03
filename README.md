@@ -46,44 +46,35 @@ Optimized for 100% static hosting on **GitHub Pages** with **zero configuration*
 ```
 Ranju/
 ├── .nojekyll                 # Ensures GitHub Pages serves all assets directly
-├── index.html                # Main semantic single-page layout
+├── index.html                # Main semantic single-page layout & SEO schema
+├── sitemap.xml               # Search engine XML sitemap with Google Image metadata
+├── robots.txt                # Search crawler configuration & sitemap pointer
 ├── README.md                 # Project documentation & deployment guide
+├── manifest.json             # PWA web manifest
+├── sw.js                     # Progressive web app service worker & cache
 ├── css/
 │   └── style.css             # Modular CSS design system, variables & responsiveness
 ├── js/
 │   └── main.js               # Bilingual dictionary, live status & UI interactions
 └── assets/
-    ├── ranju-sah.jpg         # Ranju Sah official portrait (Wikimedia Commons)
+    ├── ranju-sah.jpg         # Ranju Sah official portrait
+    ├── ranju-press-mics.jpg  # Reporters Club national press conference
+    ├── bhansar-andolan.jpg   # Bhansar customs movement rally
+    ├── justice-aarti-sah.png # Aarti Sah justice protest
+    ├── women-empowerment.jpg # Grassroots rural women dialogue
+    ├── door-to-door-campaign.jpg # Parsa-2 constituency campaign
     ├── ajp-logo-red.png      # Official AJP election symbol (red backdrop)
     ├── ajp-logo-clean.png    # Official election symbol (transparent)
     └── favicon.png           # Browser tab favicon
 ```
 
-Total files: **8 files** (Strictly under 100 files limit).
-
 ---
 
-## 🚀 How to Deploy on GitHub Pages
+## 🌐 Live Production & Search Engine URLs
 
-1. **Initialize Git & Push to GitHub:**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial release of Ranju Sah official website"
-   git branch -M main
-   git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/<REPO_NAME>.git
-   git push -u origin main
-   ```
-
-2. **Enable GitHub Pages:**
-   - Go to your repository on GitHub.
-   - Navigate to **Settings** > **Pages** (in the left sidebar).
-   - Under **Build and deployment** > **Source**, choose **Deploy from a branch**.
-   - Select branch: `main` / folder: `/ (root)`.
-   - Click **Save**.
-
-Your website will be live in ~30 seconds at:
-`https://<YOUR_GITHUB_USERNAME>.github.io/<REPO_NAME>/`
+- **Official Website:** `https://saimansah.github.io/Ranju/`
+- **XML Sitemap:** `https://saimansah.github.io/Ranju/sitemap.xml`
+- **Robots.txt:** `https://saimansah.github.io/Ranju/robots.txt`
 
 ---
 

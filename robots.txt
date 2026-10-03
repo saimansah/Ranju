@@ -1,0 +1,21 @@
+# ==============================================================================
+# Robots.txt for Ranju Sah (रन्जु साह) Official Website
+# Canonical Domain: https://saimansah.github.io/Ranju/
+# ==============================================================================
+
+User-agent: *
+Allow: /
+
+# Googlebot specific rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# XML Sitemap Direct Location
+Sitemap: https://saimansah.github.io/Ranju/sitemap.xml

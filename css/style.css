@@ -494,6 +494,41 @@ button {
 }
 
 .hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-entity-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-name-ne {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+}
+
+.hero-name-sep {
+  color: var(--border-strong);
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+.hero-name-en {
+  font-size: 1.45rem;
+  font-weight: 750;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  letter-spacing: 0.02em;
+}
+
+.hero-tagline-block {
+  display: block;
   font-size: 3.25rem;
   font-weight: 850;
   line-height: 1.15;
@@ -2108,8 +2143,16 @@ button {
     font-size: 2.1rem;
   }
 
-  .hero-title {
-    font-size: 2.3rem;
+  .hero-tagline-block {
+    font-size: 2.2rem;
+  }
+
+  .hero-name-ne {
+    font-size: 1.35rem;
+  }
+
+  .hero-name-en {
+    font-size: 1.15rem;
   }
 
   .nav-menu {

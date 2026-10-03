@@ -1,12 +1,14 @@
 // Service Worker for Ranju Sah Official Website
 // Cache-First with Network Fallback for static assets
-const CACHE_NAME = 'ranju-sah-v1.1';
+const CACHE_NAME = 'ranju-sah-v1.2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './css/style.css',
   './js/main.js',
   './manifest.json',
+  './sitemap.xml',
+  './robots.txt',
   './assets/favicon.png',
   './assets/ranju-sah.jpg',
   './assets/ranju-press-mics.jpg',
